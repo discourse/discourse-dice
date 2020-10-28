@@ -50,6 +50,8 @@ function parseDice(match) {
     errors.push("dice.missing.faces");
   } else if (!(faces > 1)) {
     errors.push("dice.invalid.faces");
+  } else if (faces > MersenneTwister.prototype.genrand_int26n_max) {
+    errors.push("dice.excessive.faces");
   }
   let modValue = modValueRaw;
   if (match[idxModValue] !== undefined) {
@@ -94,7 +96,7 @@ function rollDice(rand, attrs) {
 
   const results = [];
   for (var i = 0; i < attrs.quantity; i++) {
-    results.push(1 + rand.genrand_int31n(attrs.faces));
+    results.push(1 + rand.genrand_int26n(attrs.faces));
   }
 
   attrs.rawResults = results;

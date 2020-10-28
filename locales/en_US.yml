@@ -8,6 +8,7 @@ en_US:
       quantity:
         one: "Excessive dice quantity (max 1)"
         other: "Excessive dice quantity (max %{count})"
+      faces: "Number of die faces cannot exceed 67,000,000"
     missing:
       faces: "Invalid die specification: missing number of faces"
     invalid:

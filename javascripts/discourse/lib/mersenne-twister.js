@@ -184,23 +184,40 @@ MersenneTwister.prototype.genrand_res53 = function() {
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Int31n returns, as an int32, a non-negative pseudo-random number in [0,n).
-// It panics if n <= 0.
-MersenneTwister.prototype.genrand_int31n = function(max_) {
+// Int26n returns, as an int32, a non-negative pseudo-random number in [0,n).
+// It throws if n <= 0 or n > genrand_int26n_max (over 2^26-1).
+//
+// See https://lemire.me/blog/2016/06/30/fast-random-shuffling/ ,
+// https://lemire.me/blog/2016/06/27/a-fast-alternative-to-the-modulo-reduction/
+MersenneTwister.prototype.genrand_int26n = function(max_) {
   const max = max_ | 0;
-	if (max <= 0) {
-		throw "invalid argument to genrand_int31n";
-	}
+  if (max <= 0) {
+    throw "invalid argument to genrand_int26n";
+  }
+  const POW2_27 = 134217728;
+  const MASK2_27 = 134217727;
+  const POW2_26 = 67108864;
+  const MASK2_26 = 67108863;
+  if (max >= POW2_26) {
+    throw "argument to genrand_int26n too large";
+  }
 
-	if ((max & (max - 1)) == 0) { // max is power of two, can mask
-		return this.genrand_int31() & (max - 1);
-	}
-	const imax = (0x7fffffff - (0x80000000 % (max | 0))) | 0;
-	let v = this.genrand_int31();
-	while (v > imax) {
-		v = this.genrand_int31();
-	}
-	return v % max;
+  const val = this.genrand_int32() & MASK2_27;
+  let product = val * max; /* 26 + 27 = up to 2^53 - this is our precision limit */
+  let leftover = product & MASK2_27;
+  if (leftover < max) {
+    // threshold = uint32(-n) % uint32(n)
+    // Manually perform the two's complement (~n+1) and sign bit reinterpretation (+2^n) in the lower base
+    const threshold = ((~max) & MASK2_26 + 1 + POW2_26) % max;
+    while (leftover < threshold) {
+      const reroll = this.genrand_int32() & MASK2_27;
+      product = reroll * max;
+      leftover = product & MASK2_27;
+    }
+  }
+  return (product / POW2_27) | 0;
 }
+
+MersenneTwister.prototype.genrand_int26n_max = 67108863;
 
 export default MersenneTwister;
