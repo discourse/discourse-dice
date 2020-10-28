@@ -13,6 +13,9 @@
   // controversial setting, get feedback
   vertical-align: text-bottom;
 }
+.dice-threshold-txt, .dice-input.dice-mod, .dice-individual-txt {
+  margin-left: 0.25em;
+}
 
 .dice-results {
   word-wrap: normal;
