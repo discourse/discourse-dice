@@ -93,10 +93,16 @@ createWidget("dice-result", {
     if (errors && errors.length > 0) {
       const warningEmojiHtml = emojiUnescape(":warning:");
       return errors.map(e => {
+        const i18nAttrs = {
+          input: attrs.rawInput,
+        };
+        if (e === "dice.excessive.quantity") {
+          i18nAttrs.count = settings.max_dice;
+        }
         return h("div.dice-err-input", [
           new RawHtml({html: warningEmojiHtml}),
           " ",
-          h("span.dice-err-msg", {}, I18n.t(themePrefix(e), {input: attrs.rawInput})),
+          h("span.dice-err-msg", {}, I18n.t(themePrefix(e), i18nAttrs)),
         ]);
       });
     }

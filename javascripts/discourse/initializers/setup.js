@@ -36,14 +36,17 @@ function parseDice(match) {
     if (isNaN(r)) return undefined;
     return r;
   };
-  const quantity = parse(match[idxQuantity]),
+  const quantityRaw = parse(match[idxQuantity]),
     faces = parse(match[idxFaces]),
     modValueRaw = parse(match[idxModValue]),
     threshold = parse(match[idxThreshold]);
-  if (match[idxQuantity] === undefined) {
+  let quantity = quantityRaw;
+  if (quantity === undefined) {
     quantity = 1;
   } else if (!(quantity > 0)) {
     errors.push("dice.invalid.quantity");
+  } else if (quantity > settings.max_dice) {
+    errors.push("dice.excessive.quantity");
   }
   if (match[idxFaces] === undefined) {
     errors.push("dice.missing.faces");
@@ -112,11 +115,18 @@ export default {
             ".d-wrap[data-wrap=dice]"
           );
           let rollId = 1;
+          let seenErrors = false;
           placeholderNodes.forEach(elem => {
             const match = diceRegexp.exec(elem.innerText);
             const attrs = parseDice(match);
             attrs.rawInput = (match && match[0]) || elem.innerText;
-            if (rand) {
+            if (rand && seenErrors) {
+              if (!(attrs.errors && attrs.errors.length > 0)) {
+                attrs.errors = ["dice.invalid.halt_after_error"];
+              }
+            } else if (attrs.errors && attrs.errors.length > 0) {
+              seenErrors = true;
+            } else if (rand) {
               rollDice(rand, attrs); // attrs.rawResults
             }
 
