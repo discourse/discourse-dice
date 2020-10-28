@@ -2,6 +2,7 @@
   font-size: 0.85em;
   color: var(--primary-very-high, $primary-very-high);
 }
+
 .dice-sum, .dice-numpass, .dice-results > .die:only-child {
   font-weight: bold;
 }
@@ -12,6 +13,17 @@
   // controversial setting, get feedback
   vertical-align: text-bottom;
 }
+
+.dice-results {
+  word-wrap: normal;
+}
+.die.dice-crit {
+  font-weight: bold;
+  &.crit-1 {
+    color: var(--danger, $danger);
+  }
+}
 .dice-join-plus {
   margin: 0 0.095em;
+  word-wrap: break-word;
 }

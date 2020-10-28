@@ -71,8 +71,22 @@ function parseDice(match) {
 
   return {
     errors,
-    quantity, faces, modValue, threshold, individual
+    quantity, faces, modValue, threshold, individual,
+    rawInput: null,
+    rawResults: null,
+    crits: null,
   };
+}
+
+// Parses the crit=n,n,n option and writes to attrs.
+function parseCrits(critString, attrs) {
+  const list = critString.split(",").map(s => parseInt(s));
+  if (list.some(isNaN)) {
+    attrs.errors.push("dice.invalid.crits");
+    return attrs;
+  }
+  attrs.crits = list;
+  return attrs;
 }
 
 function rollDice(rand, attrs) {
@@ -80,7 +94,7 @@ function rollDice(rand, attrs) {
 
   const results = [];
   for (var i = 0; i < attrs.quantity; i++) {
-    results.push(rand.genrand_int31n(attrs.faces));
+    results.push(1 + rand.genrand_int31n(attrs.faces));
   }
 
   attrs.rawResults = results;
@@ -135,6 +149,9 @@ export default {
             const match = diceRegexp.exec(elem.innerText);
             const attrs = parseDice(match);
             attrs.rawInput = (match && match[0]) || elem.innerText;
+            if (elem.dataset.crit) {
+              parseCrits(elem.dataset.crit, attrs);
+            }
             if (rand && seenErrors) {
               if (!(attrs.errors && attrs.errors.length > 0)) {
                 attrs.errors = ["dice.invalid.halt_after_error"];
