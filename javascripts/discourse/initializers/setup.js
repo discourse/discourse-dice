@@ -21,8 +21,6 @@ const diceRegexp = /(\d+)?d(\d+)?(?:([+-])(\d+))?(?:t(\d+))?(i)?/,
   idxThreshold = 5,
   idxIndividual = 6;
 
-let register;
-
 // returns Object{ quantity, faces, modValue, threshold, individual: Boolean, errors: []i18nkey }
 function parseDice(match) {
   const errors = [];
@@ -94,7 +92,24 @@ export default {
 
   initialize() {
     withPluginApi("0.8.7", api => {
-      register = getRegister(api);
+      let _glued = [];
+
+      function cleanUp() {
+        _glued.forEach(g => g.cleanUp());
+        _glued = [];
+      }
+
+      const register = getRegister(api);
+      function attachDiceWidget(container, attrs) {
+        const glue = new WidgetGlue(
+          "dice-result",
+          register,
+          attrs
+        );
+        glue.appendTo(container);
+        _glued.push(glue);
+      }
+
       api.decorateCooked(
         ($cooked, postWidget) => {
           const diceNodes = $cooked[0].querySelectorAll(
@@ -130,13 +145,16 @@ export default {
               rollDice(rand, attrs); // attrs.rawResults
             }
 
-            const glue = new WidgetGlue("dice-result", register, attrs);
             elem.innerHTML = "";
-            glue.appendTo(elem);
+            const sacrificial = document.createElement("div");
+            elem.appendChild(sacrificial);
+            attachDiceWidget(sacrificial, attrs);
           });
         },
         { id: "discourse-dice" }
       );
+
+      api.cleanupStream(cleanUp);
     });
   }
 }
