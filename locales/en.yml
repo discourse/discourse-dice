@@ -1,0 +1,15 @@
+en:
+  dice:
+    result:
+      success_count:
+        one: "(1 Success)"
+        other: "(%{count} Successes)"
+    missing:
+      faces: "Invalid die specification: missing number of faces"
+    invalid:
+      generic: "Invalid die specification. Format: 2d20+3"
+      quantity: "Number of dice cannot be 0"
+      faces: "Number of die faces cannot be 0 or 1"
+      modifier: "Modifier cannot be 0"
+      threshold: "Threshold cannot be 0"
+

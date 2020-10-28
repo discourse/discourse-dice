@@ -28,6 +28,62 @@ function renderDiceInput(attrs) {
   return result;
 }
 
+function renderDiceResults(attrs) {
+  let joiner = h("span.dice-join-plus", ["+"]);
+  if (attrs.individual) {
+    joiner = h("span.dice-join-comma", [", "]);
+  }
+  const totalSum = attrs.rawResults.reduce((a, b) => a + b, 0) + (attrs.modValue || 0);
+  let numSuccess = 0;
+
+  let thresholdClass = "";
+  if (attrs.threshold && !attrs.individual) {
+    thresholdClass = totalSum >= attrs.threshold ? "threshold-pass" : "threshold-fail";
+  }
+
+  const result = attrs.rawResults.map(function(die) {
+    let dieClass = "die";
+    if (attrs.crits && attrs.crits.indexOf(die) !== -1) {
+      dieClass += " dice-crit crit-" + die.toString();
+    }
+    if (attrs.individual) {
+      const val = die + (attrs.modValue || 0);
+      if (attrs.threshold) {
+        dieClass += val >= attrs.threshold ? " threshold-ipass" : " threshold-ifail";
+        if (val >= attrs.threshold) {
+          numSuccess += 1;
+        }
+      }
+      return h("span", {
+        className: dieClass,
+      }, [die.toString()]);
+    } else {
+      return h("span", {
+        className: dieClass,
+      }, [die.toString()]);
+    }
+  }).flatMap((node, idx) => {
+    if (idx === 0) {
+      return [node];
+    } else {
+      return [joiner, node];
+    }
+  });
+
+  if (!attrs.individual && attrs.quantity > 1) {
+    result.push(h("span.dice-sum-sep", [" = "]));
+    result.push(h("span.dice-sum", [totalSum.toString()]));
+  }
+  if (attrs.individual && attrs.threshold && attrs.quantity > 1) {
+    result.push(h("span.dice-numpass-sep", [" "]));
+    result.push(h("span.dice-numpass", [I18n.t(themePrefix("dice.result.success_count"), {count: numSuccess})]));
+  }
+
+  return h("div", {
+    className: "dice-results " + thresholdClass,
+  }, result);
+}
+
 createWidget("dice-result", {
   tagName: "blockquote.dice-result",
   buildKey: (attrs) => `dice-result-${attrs.postId}-${attrs.rollId}`,
@@ -40,18 +96,29 @@ createWidget("dice-result", {
         return h("div.dice-err-input", [
           new RawHtml({html: warningEmojiHtml}),
           " ",
-          h("span.dice-err-msg", {}, I18n.t(e)),
+          h("span.dice-err-msg", {}, I18n.t(themePrefix(e), {input: attrs.rawInput})),
         ]);
       });
     }
 
     const dieEmojiHtml = emojiUnescape(":game_die:");
-    return [
-      h("div.dice-input-explain", [
-        new RawHtml({html: dieEmojiHtml}),
-        " ",
-        h("span.dice-input", renderDiceInput(attrs)),
-      ]),
-    ];
+    if (attrs.rawResults) {
+      return [
+        h("div.dice-input-explain", [
+          new RawHtml({html: dieEmojiHtml}),
+          " ",
+          h("span.dice-input", renderDiceInput(attrs)),
+        ]),
+        renderDiceResults(attrs),
+      ];
+    } else {
+      return [
+        h("div.dice-input-explain", [
+          new RawHtml({html: dieEmojiHtml}),
+          " ",
+          h("span.dice-input", renderDiceInput(attrs)),
+        ]),
+      ];
+    };
   },
 });
