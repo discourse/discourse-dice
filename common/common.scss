@@ -25,6 +25,7 @@
 }
 .die.dice-crit {
   font-weight: bold;
+  font-style: italic;
   &.crit-1 {
     color: var(--danger, $danger);
   }
