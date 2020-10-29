@@ -7,7 +7,6 @@ import MersenneTwister from "discourse/lib/mersenne-twister";
 import murmurhash3 from "discourse/lib/murmurhash3";
 
 const MURMUR_HASH_SEED = 843031067;
-const MAX_DICE = 101;
 
 // [NdN] - base format, \1 is quantity \2 is faces
 // +N or -N - flat modifier, \3 is sign \4 is modifier
