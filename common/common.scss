@@ -3,7 +3,7 @@
   color: var(--primary-very-high, $primary-very-high);
 }
 
-.dice-sum, .dice-numpass, .dice-results > .die:only-child {
+.dice-sum, /* .dice-numpass, */ .dice-results > .die:only-child {
   font-weight: bold;
 }
 .threshold-pass .dice-sum, .die.threshold-ipass {
@@ -11,10 +11,6 @@
 }
 .threshold-fail .dice-sum, .die.threshold-ifail {
   color: var(--danger, $danger);
-}
-.dice-input-explain img.emoji {
-  // controversial setting, get feedback
-  vertical-align: text-bottom;
 }
 .dice-threshold-txt, .dice-input.dice-mod, .dice-individual-txt {
   margin-left: 0.25em;
@@ -38,4 +34,14 @@
 .dice-mod-sym {
   margin-right: 0em;
   margin-left: 0.095em;
+}
+
+.dice-input-explain {
+  // Give an indicator that this is a legitimate roll by doing something normal
+  // posts can't. Designers: feel free to replace this with a replacement for
+  // the <blockquote> style.
+  .emoji:first-of-type {
+    float: left;
+    margin: 0.5em 6px 0.5em -6px;
+  }
 }
