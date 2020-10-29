@@ -6,8 +6,11 @@
 .dice-sum, .dice-numpass, .dice-results > .die:only-child {
   font-weight: bold;
 }
-.threshold-pass .dice-sum {
-  color: var(--success-hover, $success-hover);
+.threshold-pass .dice-sum, .die.threshold-ipass {
+  color: var(--success, $success);
+}
+.threshold-fail .dice-sum, .die.threshold-ifail {
+  color: var(--danger, $danger);
 }
 .dice-input-explain img.emoji {
   // controversial setting, get feedback
@@ -26,7 +29,12 @@
     color: var(--danger, $danger);
   }
 }
+
 .dice-join-plus {
   margin: 0 0.095em;
   word-wrap: break-word;
+}
+.dice-mod-sym {
+  margin-right: 0em;
+  margin-left: 0.095em;
 }

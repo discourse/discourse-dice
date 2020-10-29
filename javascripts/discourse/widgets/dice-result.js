@@ -70,13 +70,30 @@ function renderDiceResults(attrs) {
     }
   });
 
-  if (!attrs.individual && attrs.quantity > 1) {
-    result.push(h("span.dice-sum-sep", [" = "]));
-    result.push(h("span.dice-sum", [totalSum.toString()]));
-  }
-  if (attrs.individual && attrs.threshold && attrs.quantity > 1) {
-    result.push(h("span.dice-numpass-sep", [" "]));
-    result.push(h("span.dice-numpass", [I18n.t(themePrefix("dice.result.success_count"), {count: numSuccess})]));
+  if (!attrs.individual) {
+    let showTotal = false;
+    if (attrs.modValue !== null && attrs.modValue !== 0) {
+      showTotal = true;
+      if (attrs.modValue > 0) {
+        result.push(h("span.dice-mod-sym.sym-plus", [" +"]));
+        result.push(h("span.dice-mod", [attrs.modValue.toString()]));
+      } else {
+        result.push(h("span.dice-mod-sym.sym-minus", [" -"]));
+        result.push(h("span.dice-mod", [(-attrs.modValue).toString()]));
+      }
+    }
+    if (attrs.quantity > 1) {
+      showTotal = true;
+    }
+    if (showTotal) {
+      result.push(h("span.dice-sum-sep", [" = "]));
+      result.push(h("span.dice-sum", [totalSum.toString()]));
+    }
+  } else {
+    if (attrs.threshold && attrs.quantity > 1) {
+      result.push(h("span.dice-numpass-sep", [" "]));
+      result.push(h("span.dice-numpass", [I18n.t(themePrefix("dice.result.success_count"), {count: numSuccess})]));
+    }
   }
 
   return h("div", {
