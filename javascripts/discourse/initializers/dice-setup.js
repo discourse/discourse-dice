@@ -3,8 +3,8 @@ import { getRegister } from "discourse-common/lib/get-owner";
 import { withPluginApi } from "discourse/lib/plugin-api";
 import WidgetGlue from "discourse/widgets/glue";
 
-import MersenneTwister from "discourse/lib/mersenne-twister";
-import murmurhash3 from "discourse/lib/murmurhash3";
+import MersenneTwister from "../lib/mersenne-twister";
+import murmurhash3 from "../lib/murmurhash3";
 
 const MURMUR_HASH_SEED = 843031067;
 
