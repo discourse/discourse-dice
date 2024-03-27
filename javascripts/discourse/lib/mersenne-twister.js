@@ -1,3 +1,5 @@
+/* eslint-disable */
+// prettier-ignore
 // SPDX-License-Identifier: BSD-3-Clause
 
 // This source file consists of three sections under the following licenses:
