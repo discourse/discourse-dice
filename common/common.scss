@@ -6,13 +6,17 @@
 .dice-sum, /* .dice-numpass, */ .dice-results > .die:only-child {
   font-weight: bold;
 }
-.threshold-pass .dice-sum, .die.threshold-ipass {
+.threshold-pass .dice-sum,
+.die.threshold-ipass {
   color: var(--success, $success);
 }
-.threshold-fail .dice-sum, .die.threshold-ifail {
+.threshold-fail .dice-sum,
+.die.threshold-ifail {
   color: var(--danger, $danger);
 }
-.dice-threshold-txt, .dice-input.dice-mod, .dice-individual-txt {
+.dice-threshold-txt,
+.dice-input.dice-mod,
+.dice-individual-txt {
   margin-left: 0.25em;
 }
 
