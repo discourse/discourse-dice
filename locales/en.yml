@@ -2,11 +2,11 @@ en:
   dice:
     result:
       success_count:
-        one: "(1 Success)"
+        one: "(%{count} Success)"
         other: "(%{count} Successes)"
     excessive:
       quantity:
-        one: "Excessive dice quantity (max 1)"
+        one: "Excessive dice quantity (max %{count})"
         other: "Excessive dice quantity (max %{count})"
       faces: "Number of die faces cannot exceed 67,000,000"
     missing:
@@ -19,4 +19,3 @@ en:
       threshold: "Threshold cannot be 0"
       crits: "Bad numbers in crits attribute. (Should be crits=4,5,6)"
       halt_after_error: "Rolling halted due to earlier error. Fix errors to view results."
-

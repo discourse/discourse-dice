@@ -1,3 +1,4 @@
+/* eslint-disable */
 // SPDX-License-Identifier: BSD-3-Clause
 
 // This source file consists of three sections under the following licenses:
