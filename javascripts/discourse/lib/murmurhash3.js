@@ -1,5 +1,4 @@
 /* eslint-disable */
-// prettier-ignore
 // SPDX-License-Identifier: MIT
 
 /**
