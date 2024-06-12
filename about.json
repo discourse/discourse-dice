@@ -1,8 +1,8 @@
 {
-  "name": "Discourse Dice Roller",
+  "name": "Dice Roller",
   "component": true,
-  "license_url": null,
-  "about_url": null,
+  "license_url": "https://github.com/discourse/discourse-dice/blob/main/LICENSE",
+  "about_url": "https://meta.discourse.org/t/dice-roller/170679",
   "authors": null,
   "theme_version": null,
   "minimum_discourse_version": null,
