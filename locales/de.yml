@@ -5,3 +5,23 @@
 # https://translate.discourse.org/
 
 de:
+  dice:
+    result:
+      success_count:
+        one: "(%{count} Erfolg)"
+        other: "(%{count} Erfolge)"
+    excessive:
+      quantity:
+        one: "Übermäßige Würfelanzahl (max. %{count})"
+        other: "Übermäßige Würfelanzahl (max. %{count})"
+      faces: "Die Anzahl der Würfelflächen darf 67.000.000 nicht überschreiten."
+    missing:
+      faces: "Ungültige Würfelspezifikation: fehlende Anzahl von Flächen"
+    invalid:
+      generic: "Ungültige Würfelspezifikation. Format: 2d20+3"
+      quantity: "Die Anzahl der Würfel kann nicht 0 sein"
+      faces: "Die Anzahl der Würfelflächen kann nicht 0 oder 1 sein"
+      modifier: "Modifikator kann nicht 0 sein"
+      threshold: "Der Schwellenwert kann nicht 0 sein"
+      crits: "Falsche Zahlen im Crits-Attribut. (Sollte Crits=4,5,6 sein)"
+      halt_after_error: "Das Würfeln wurde aufgrund eines früheren Fehlers angehalten. Behebe die Fehler, um die Ergebnisse anzuzeigen."
