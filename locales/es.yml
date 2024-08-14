@@ -5,3 +5,23 @@
 # https://translate.discourse.org/
 
 es:
+  dice:
+    result:
+      success_count:
+        one: "(%{count} con éxito)"
+        other: "(%{count} con éxito)"
+    excessive:
+      quantity:
+        one: "Cantidad excesiva de dados (máx. %{count})"
+        other: "Cantidad excesiva de dados (máx. %{count})"
+      faces: "El número de caras de dado no puede superar los 67 000 000"
+    missing:
+      faces: "Especificación del dado no válida: falta el número de caras"
+    invalid:
+      generic: "Especificación de dado no válida. Formato: 2d20+3"
+      quantity: "El número de dados no puede ser 0."
+      faces: "El número de caras del dado no puede ser 0 o 1"
+      modifier: "El modificador no puede ser 0"
+      threshold: "El umbral no puede ser 0"
+      crits: "Números incorrectos en el atributo de críticos. (Debería ser críticos=4,5,6)"
+      halt_after_error: "El rodaje se detuvo debido a un error anterior. Corrige los errores para ver los resultados."

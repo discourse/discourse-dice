@@ -5,3 +5,23 @@
 # https://translate.discourse.org/
 
 nl:
+  dice:
+    result:
+      success_count:
+        one: "(%{count} succes)"
+        other: "(%{count} successen)"
+    excessive:
+      quantity:
+        one: "Te hoog aantal dobbelstenen (max. %{count})"
+        other: "Te hoog aantal dobbelstenen (max. %{count})"
+      faces: "Het aantal dobbelsteenvlakken mag niet groter zijn dan 67.000.000"
+    missing:
+      faces: "Ongeldige dobbelsteenspecificatie: aantal vlakken ontbreekt"
+    invalid:
+      generic: "Ongeldige dobbelsteenspecificatie. Notatie: 2d20+3"
+      quantity: "Aantal dobbelstenen mag niet 0 zijn"
+      faces: "Aantal dobbelsteenvlakken mag niet 0 of 1 zijn"
+      modifier: "Modificator mag niet 0 zijn"
+      threshold: "Drempel mag niet 0 zijn"
+      crits: "Onjuiste getallen in crits-attribuut. (Moet crits=4,5,6 zijn)"
+      halt_after_error: "Gooien gestopt vanwege eerdere fout. Los fouten op om resultaten te bekijken."

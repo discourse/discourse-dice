@@ -5,3 +5,23 @@
 # https://translate.discourse.org/
 
 fi:
+  dice:
+    result:
+      success_count:
+        one: "(%{count} onnistuminen)"
+        other: "(%{count} onnistumista)"
+    excessive:
+      quantity:
+        one: "Liiallinen määrä noppia (enintään %{count})"
+        other: "Liiallinen määrä noppia (enintään %{count})"
+      faces: "Nopan silmälukujen määrä ei saa olla yli 67 000 000"
+    missing:
+      faces: "Virheellinen nopan määritys: silmälukujen määrä puuttuu"
+    invalid:
+      generic: "Virheellinen nopan erittely. Muoto: 2d20+3"
+      quantity: "Noppien määrä ei voi olla 0"
+      faces: "Nopan silmälukujen määrä ei voi olla 0 tai 1"
+      modifier: "Muokkaaja ei voi olla 0"
+      threshold: "Raja ei voi olla 0"
+      crits: "Virheelliset luvut crit-määritteessä. (Tulisi olla crits=4,5,6)"
+      halt_after_error: "Pyörittäminen keskeytyi aikaisemman virheen vuoksi. Korjaa virheet nähdäksesi tulokset."

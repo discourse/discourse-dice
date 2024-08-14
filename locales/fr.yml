@@ -5,3 +5,23 @@
 # https://translate.discourse.org/
 
 fr:
+  dice:
+    result:
+      success_count:
+        one: "(%{count} succès)"
+        other: "(%{count} succès)"
+    excessive:
+      quantity:
+        one: "Quantité de dés excessive (max %{count})"
+        other: "Quantité de dés excessive (max %{count})"
+      faces: "Le nombre de faces de dés ne peut pas dépasser 67 000 000"
+    missing:
+      faces: "Spécification de dé invalide : nombre de faces manquant"
+    invalid:
+      generic: "Spécification de dé invalide. Format : 2d20+3"
+      quantity: "Le nombre de dés ne peut pas être égal à 0"
+      faces: "Le nombre de faces de dé ne peut pas être égal à 0 ou 1"
+      modifier: "Le modificateur ne peut pas être égal à 0"
+      threshold: "Le seuil ne peut pas être égal à 0"
+      crits: "Mauvais nombres dans l'attribut crits. (crits devrait être égal à = 4,5,6)"
+      halt_after_error: "Le roulement a été interrompu en raison d'une erreur antérieure. Corrigez les erreurs pour afficher les résultats."
