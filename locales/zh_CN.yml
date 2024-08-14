@@ -5,3 +5,21 @@
 # https://translate.discourse.org/
 
 zh_CN:
+  dice:
+    result:
+      success_count:
+        other: "（%{count} 次成功）"
+    excessive:
+      quantity:
+        other: "骰子数量过多（最多 %{count} 个）"
+      faces: "骰子面数不能超过 67,000,000"
+    missing:
+      faces: "骰子规格无效：缺少面数"
+    invalid:
+      generic: "骰子规格无效。格式：2d20+3"
+      quantity: "骰子数量不能为 0"
+      faces: "骰子面数不能为 0 或 1"
+      modifier: "修饰符不能为 0"
+      threshold: "阈值不能为 0"
+      crits: "crits 属性中的数字不正确。（应为 crits=4,5,6）"
+      halt_after_error: "由于先前的错误，已停止滚动。请修正错误以查看结果。"

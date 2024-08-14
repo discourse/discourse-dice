@@ -5,3 +5,23 @@
 # https://translate.discourse.org/
 
 it:
+  dice:
+    result:
+      success_count:
+        one: "(%{count} riuscito)"
+        other: "(%{count} riusciti)"
+    excessive:
+      quantity:
+        one: "Quantità eccessiva di dadi (max %{count})"
+        other: "Quantità eccessiva di dadi (max %{count})"
+      faces: "Il numero di facce del dado non può superare 67.000.000"
+    missing:
+      faces: "Specifica del dado non valida: numero di facce assente"
+    invalid:
+      generic: "Specifica del dado non valida. Formato: 2d20+3"
+      quantity: "Il numero di dadi non può essere 0"
+      faces: "Il numero di facce del dado non può essere 0 o 1"
+      modifier: "Il modificatore non può essere 0"
+      threshold: "La soglia non può essere 0"
+      crits: "Numeri errati nell'attributo critici. (Dovrebbe essere critici=4,5,6)"
+      halt_after_error: "Il rotolamento è stato interrotto a causa di un errore precedente. Correggi gli errori per visualizzare i risultati."

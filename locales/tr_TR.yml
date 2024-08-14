@@ -5,3 +5,23 @@
 # https://translate.discourse.org/
 
 tr_TR:
+  dice:
+    result:
+      success_count:
+        one: "(%{count} Başarılı)"
+        other: "(%{count} Başarılı)"
+    excessive:
+      quantity:
+        one: "Fazla zar miktarı (maks. %{count})"
+        other: "Fazla zar miktarı (maks. %{count})"
+      faces: "Zar yüzlerinin sayısı 67.000.000'u geçemez"
+    missing:
+      faces: "Geçersiz zar spesifikasyonu: eksik yüz sayısı"
+    invalid:
+      generic: "Geçersiz zar spesifikasyonu. Biçim: 2d20+3"
+      quantity: "Zar sayısı 0 olamaz"
+      faces: "Zar yüzlerinin sayısı 0 veya 1 olamaz"
+      modifier: "Değiştirici 0 olamaz"
+      threshold: "Eşik 0 olamaz"
+      crits: "Crits özniteliğinde hatalı sayılar. (crits=4,5,6 olmalı)"
+      halt_after_error: "Daha önceki bir hatadan dolayı yuvarlama durduruldu. Sonuçları görüntülemek için hataları düzeltin."

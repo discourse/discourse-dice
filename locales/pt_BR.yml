@@ -5,3 +5,23 @@
 # https://translate.discourse.org/
 
 pt_BR:
+  dice:
+    result:
+      success_count:
+        one: "(%{count} sucesso)"
+        other: "(%{count} sucessos)"
+    excessive:
+      quantity:
+        one: "Quantidade de dados em excesso (máximo de %{count})"
+        other: "Quantidade de dados em excesso (máximo de %{count})"
+      faces: "A quantidade de faces de dado não pode ultrapassar 67.000.000"
+    missing:
+      faces: "Especificação de dado inválida: falta a quantidade de faces"
+    invalid:
+      generic: "Especificação de dado inválida: Formato: 2d20+3"
+      quantity: "A quantidade de dados não pode ser 0"
+      faces: "A quantidade de faces de dado não pode ser 0 ou 1"
+      modifier: "O modificador não pode ser 0"
+      threshold: "O limite não pode ser 0"
+      crits: "Números ruins no atributo de crítico. (deve ser críticos = 4,5,6)"
+      halt_after_error: "Ocorreu um erro, rolagem interrompida. Solucione os erros para ver os resultados."
