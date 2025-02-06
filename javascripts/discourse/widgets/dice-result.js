@@ -2,7 +2,7 @@ import { h } from "virtual-dom";
 import { emojiUnescape } from "discourse/lib/text";
 import RawHtml from "discourse/widgets/raw-html";
 import { createWidget } from "discourse/widgets/widget";
-import I18n from "I18n";
+import { i18n } from "discourse-i18n";
 
 function renderDiceInput(attrs) {
   const result = [
@@ -116,7 +116,7 @@ function renderDiceResults(attrs) {
       result.push(h("span.dice-numpass-sep", [" "]));
       result.push(
         h("span.dice-numpass", [
-          I18n.t(themePrefix("dice.result.success_count"), {
+          i18n(themePrefix("dice.result.success_count"), {
             count: numSuccess,
           }),
         ])
@@ -151,7 +151,7 @@ createWidget("dice-result", {
         return h("div.dice-err-input", [
           new RawHtml({ html: warningEmojiHtml }),
           " ",
-          h("span.dice-err-msg", {}, I18n.t(themePrefix(e), i18nAttrs)),
+          h("span.dice-err-msg", {}, i18n(themePrefix(e), i18nAttrs)),
         ]);
       });
     }
