@@ -1,6 +1,6 @@
+import { getRegister } from "discourse/lib/get-owner";
 import { withPluginApi } from "discourse/lib/plugin-api";
 import WidgetGlue from "discourse/widgets/glue";
-import { getRegister } from "discourse-common/lib/get-owner";
 import MersenneTwister from "../lib/mersenne-twister";
 import murmurhash3 from "../lib/murmurhash3";
 
