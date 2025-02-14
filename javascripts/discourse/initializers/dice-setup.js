@@ -131,12 +131,12 @@ export default {
       }
 
       api.decorateCooked(
-        ($cooked, postWidget) => {
+        ($cooked, helper) => {
+          const post = helper?.getModel();
           let rand = null;
-          if (postWidget) {
+          if (post) {
             // Deterministic seed generation: post ID + creation timestamp (UTC ISO8601)
-            const postAttrs = postWidget.widget.attrs;
-            const seedData = postAttrs.id + " " + postAttrs.created_at;
+            const seedData = post.id + " " + post.created_at;
 
             const seed = murmurhash3(seedData, MURMUR_HASH_SEED);
             rand = new MersenneTwister(seed);
