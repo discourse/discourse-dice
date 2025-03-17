@@ -6,14 +6,17 @@
 .dice-sum, /* .dice-numpass, */ .dice-results > .die:only-child {
   font-weight: bold;
 }
+
 .threshold-pass .dice-sum,
 .die.threshold-ipass {
   color: var(--success, $success);
 }
+
 .threshold-fail .dice-sum,
 .die.threshold-ifail {
   color: var(--danger, $danger);
 }
+
 .dice-threshold-txt,
 .dice-input.dice-mod,
 .dice-individual-txt {
@@ -23,9 +26,11 @@
 .dice-results {
   word-wrap: normal;
 }
+
 .die.dice-crit {
   font-weight: bold;
   font-style: italic;
+
   &.crit-1 {
     color: var(--danger, $danger);
   }
@@ -35,8 +40,9 @@
   margin: 0 0.095em;
   word-wrap: break-word;
 }
+
 .dice-mod-sym {
-  margin-right: 0em;
+  margin-right: 0;
   margin-left: 0.095em;
 }
 
